@@ -1,34 +1,6 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-// export function renderGallery(data) {
-//     const lightbox = new SimpleLightbox("gallery", { 
-//         captions: true,
-//         captionsData: 'alt',
-//         captionDelay: 250
-//      });
-//     const gallery = document.querySelector(".gallery");
-//     let images =  data.hits.map((hit) => {
-//       return `
-//         <a href="${hit.largeImageURL}" class="gallery-item">
-//           <img src="${hit.webformatURL}" alt="${hit.tags}" loading="lazy" />
-//           <div class="info">
-//             <p><b>Likes:</b> ${hit.likes}</p>
-//             <p><b>Views:</b> ${hit.views}</p>
-//             <p><b>Comments:</b> ${hit.comments}</p>
-//             <p><b>Downloads:</b> ${hit.downloads}</p>
-//           </div>
-//         </a>`;
-//     }).join('');
-//     list.insertAdjacentHTML("afterbegin", images);
-//     lightbox.refresh();
-//   }
-  
-// export function clearImages() {
-//     const gallery = document.querySelector(".gallery");
-//     list.innerHTML = "";
-// }
-
  const gallery = document.querySelector('.gallery');
  const lightbox = new SimpleLightbox("gallery", { 
             captions: true,
@@ -53,11 +25,7 @@ export function renderImages(images) {
 }).join('');
 
     gallery.innerHTML = markup;
-    // new SimpleLightbox("gallery", { 
-    //     captions: true,
-    //     captionsData: 'alt',
-    //     captionDelay: 250
-    //  }).refresh();
+  
   }
 
   export function clearGallery() {
