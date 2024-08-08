@@ -1,7 +1,5 @@
-// Описаний у документації
-import SimpleLightbox from "simplelightbox";
-// Додатковий імпорт стилів
-import "simplelightbox/dist/simple-lightbox.min.css";
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 // export function renderGallery(data) {
 //     const lightbox = new SimpleLightbox("gallery", { 
@@ -31,17 +29,18 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 //     list.innerHTML = "";
 // }
 
+ const gallery = document.querySelector('.gallery');
+ const lightbox = new SimpleLightbox("gallery", { 
+            captions: true,
+            captionsData: 'alt',
+            captionDelay: 250
+         });
 
-
-export function renderGallery(images) {
-    const lightbox = new SimpleLightbox("gallery", { 
-                captions: true,
-                captionsData: 'alt',
-                captionDelay: 250
-             });
-    const gallery = document.querySelector('.gallery');
-    const markup = images.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => {
-      return `
+export function renderImages(images) {
+   
+    const markup = images.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => 
+        {
+                  return`
         <a href="${largeImageURL}" class="gallery-item">
           <img src="${webformatURL}" alt="${tags}" loading="lazy" />
           <div class="info">
@@ -51,6 +50,24 @@ export function renderGallery(images) {
             <p><b>Downloads:</b> ${downloads}</p>
           </div>
         </a>`;
-    }).join('');
+}).join('');
+
     gallery.innerHTML = markup;
+    // new SimpleLightbox("gallery", { 
+    //     captions: true,
+    //     captionsData: 'alt',
+    //     captionDelay: 250
+    //  }).refresh();
+  }
+
+  export function clearGallery() {
+    gallery.innerHTML = '';
+  }
+  
+  export function showLoader() {
+    document.querySelector('.loader').classList.remove('hidden');
+  }
+  
+  export function hideLoader() {
+    document.querySelector('.loader').classList.add('hidden');
   }
