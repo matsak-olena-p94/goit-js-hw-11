@@ -25,7 +25,7 @@ export function renderImages(images) {
 }).join('');
 
     gallery.innerHTML = markup;
-  
+    lightbox.refresh()
   }
 
   export function clearGallery() {
